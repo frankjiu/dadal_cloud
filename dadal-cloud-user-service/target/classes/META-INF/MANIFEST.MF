@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: dadal-cloud-user-service
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: Administrator
+Implementation-Vendor-Id: com
+Build-Jdk: 1.8.0_141
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/dadal-cloud/dadal-cloud-user-service
+Created-By: Maven Integration for Eclipse
+
