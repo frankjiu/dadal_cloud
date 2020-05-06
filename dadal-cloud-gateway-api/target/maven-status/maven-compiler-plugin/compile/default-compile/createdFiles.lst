@@ -1,6 +1,0 @@
-com\entity\GatewayFilterDefinition.class
-com\ApiGatewayApplication.class
-com\controller\RouteController.class
-com\entity\GatewayPredicateDefinition.class
-com\entity\GatewayRouteDefinition.class
-com\service\DynamicRouteServiceImpl.class

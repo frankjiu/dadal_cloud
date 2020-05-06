@@ -8,32 +8,18 @@
 	</parent>
 	<artifactId>dadal-cloud-health-admin</artifactId>
 
-
 	<dependencies>
-		<!-- hot deploy -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<!-- eureka -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-
 		<!-- web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- ddl-cloud-health-admin -->
+		<!-- health-admin-server -->
 		<dependency>
 			<groupId>de.codecentric</groupId>
 			<artifactId>spring-boot-admin-starter-server</artifactId>
-			<version>2.0.4</version>
+			<version>${admin.server.version}</version>
 		</dependency>
 
 		<!-- mail -->
@@ -41,37 +27,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-
 	</dependencies>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Finchley.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
-	<!-- pom指定优先使用仓库地址: Maven中央仓库 -->
-	<distributionManagement>
-		<repository>
-			<id>central-repos1</id>
-			<name>Central Repository 2</name>
-			<url>https://repo1.maven.org/maven2/</url>
-		</repository>
-	</distributionManagement>
 
 </project>

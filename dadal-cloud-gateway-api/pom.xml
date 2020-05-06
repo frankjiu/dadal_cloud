@@ -8,23 +8,8 @@
 	</parent>
 	<artifactId>dadal-cloud-gateway-api</artifactId>
 
-
 	<dependencies>
-		<!-- Attention: the web dependency is no need!!!  -->
-	
-		<!-- hot deploy -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<!-- eureka -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-
+		<!-- Attention: the web dependency is no need, while the conflict will came up!!!  -->
 		<!-- gateway -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -35,14 +20,14 @@
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>1.3.2</version>
+			<version>${boot.mybatis.version}</version>
 		</dependency>
 		
 		<!-- druid -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
-			<version>1.1.9</version>
+			<version>${druid.version}</version>
 		</dependency>
 
 		<!-- mysql -->
@@ -56,57 +41,8 @@
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
-			<version>0.7.0</version>
+			<version>${jwt.version}</version>
 		</dependency>
-
-		<!-- hystrix -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-		</dependency>
-
-		<!-- actuator -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
-		<!-- servlet -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-		</dependency>
-
 	</dependencies>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Finchley.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
-	<!-- pom指定优先使用仓库地址: Maven中央仓库 -->
-	<distributionManagement>
-		<repository>
-			<id>central-repos1</id>
-			<name>Central Repository 2</name>
-			<url>https://repo1.maven.org/maven2/</url>
-		</repository>
-	</distributionManagement>
 
 </project>
