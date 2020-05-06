@@ -1,3 +1,12 @@
+target/
 /target/
+**/target/
+*.class
+*.jar
+*.war
+*.log
 .project
 .settings
+*.zip
+*.rar
+*.tar.gz
