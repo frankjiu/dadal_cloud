@@ -22,6 +22,13 @@
 			<version>${admin.server.version}</version>
 		</dependency>
 
+		<!-- admin-ui -->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-server-ui</artifactId>
+			<version>${admin.server.version}</version>
+		</dependency>
+
 		<!-- mail -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

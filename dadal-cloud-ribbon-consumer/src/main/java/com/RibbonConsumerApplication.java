@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 
 /**
- * ddl-cloud-ribbon-consumer
+ * dadal-cloud-ribbon-consumer
  * 
  * @author: Frankjiu
  * @date: 2020年4月18日

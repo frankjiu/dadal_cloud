@@ -14,7 +14,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * ddl-cloud-feign-api Feign contains the Gzip Function
+ * dadal-cloud-feign-api Feign contains the Gzip Function
  * 
  * @author: Frankjiu
  * @date: 2020年4月18日

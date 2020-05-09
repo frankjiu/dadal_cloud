@@ -57,7 +57,7 @@ public class StoreController {
 						service.getServiceId());
 			}
 		}
-		return "Now the service(spring.application.name=ddl-cloud-store-service) hash been injected into Eureka-Register!";
+		return "Ok, now the service(spring.application.name=dadal-cloud-store-service) hash been injected into Eureka-Register!";
 	}
 
 	@GetMapping("/storeConsumerFallBackTest")

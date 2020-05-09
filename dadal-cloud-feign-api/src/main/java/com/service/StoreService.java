@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.entity.User;
 
 /**
- * @Description: ddl-cloud-store-service
+ * @Description: dadal-cloud-store-service
  * @author: Frankjiu
  * @date: 2020年4月24日
  */
-@FeignClient(value = "ddl-cloud-store-service", url = "http://localhost:2001/", fallback = StoreFallBack.class)
+@FeignClient(value = "dadal-cloud-store-service", url = "http://localhost:2001/", fallback = StoreFallBack.class)
 public interface StoreService {
 
 	@RequestMapping("/storeService")

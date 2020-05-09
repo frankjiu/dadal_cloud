@@ -15,16 +15,16 @@ import java.util.Random;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Description: Msg Sender
  * @author: Frankjiu
  * @date: 2020年4月30日
  */
-//@RestController
-@Component
+@RestController
+//@Component
 public class MsgSender {
 
 	@Autowired

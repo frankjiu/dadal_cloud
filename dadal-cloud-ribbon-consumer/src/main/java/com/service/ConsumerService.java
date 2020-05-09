@@ -29,25 +29,25 @@ public class ConsumerService {
 
 	@HystrixCommand(fallbackMethod = "storeFallBack")
 	public String storeConsumer() {
-		return restTemplate.getForEntity("http://ddl-cloud-store-service/storeService", String.class).getBody();
+		return restTemplate.getForEntity("http://dadal-cloud-store-service/storeService", String.class).getBody();
 	}
 
 	public String storeFallBack() {
-		return "ddl-cloud-store-service error";
+		return "dadal-cloud-store-service error";
 	}
 
 	public String add(User user) {
 		user = new User("frank", 30);
-		return restTemplate.postForEntity("http://ddl-cloud-store-service/user", user, String.class).getBody();
+		return restTemplate.postForEntity("http://dadal-cloud-store-service/user", user, String.class).getBody();
 	}
 
 	public void put(User user, String id) {
 		user = new User("frank", 30);
-		restTemplate.put("http://ddl-cloud-store-service/user/{1}", user, id);
+		restTemplate.put("http://dadal-cloud-store-service/user/{1}", user, id);
 	}
 
 	public void delete(String id) {
-		restTemplate.delete("http://ddl-cloud-store-service/user/{1}", id);
+		restTemplate.delete("http://dadal-cloud-store-service/user/{1}", id);
 	}
 
 }
