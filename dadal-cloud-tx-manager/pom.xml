@@ -12,6 +12,13 @@
 		<lcn.last.version>4.1.0</lcn.last.version>
 	</properties>
 	<dependencies>
+	
+		<!-- web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	
 		<dependency>
 			<groupId>com.codingapi</groupId>
 			<!-- if you use dubbo, you should need another jar here -->
@@ -30,8 +37,8 @@
 			<version>${lcn.last.version}</version>
 			<exclusions>
 				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>*</artifactId>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -41,6 +48,7 @@
             <artifactId>spring-tx</artifactId>
             <scope>provided</scope>
         </dependency>
+        
 	</dependencies>
 
 </project>

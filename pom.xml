@@ -43,6 +43,7 @@
 		<module>dadal-cloud-log-service</module>
 		<module>dadal-cloud-user-service</module>
 		<module>dadal-cloud-tx-manager</module>
+		<module>dadal-cloud-zookeeper</module>
 	</modules>
 
 	<dependencies>

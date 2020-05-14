@@ -10,7 +10,6 @@ package com.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.codingapi.tx.annotation.TxTransaction;
 import com.codingapi.tx.config.service.TxManagerTxUrlService;
@@ -32,7 +31,7 @@ public class TxManagerTxUrlServiceImpl implements TxManagerTxUrlService {
 	}
 
 	@TxTransaction(isStart = true)
-	@Transactional
+	//@Transactional
 	public void trade() {
 		//本地调用
 		//tradeDao.save();
@@ -40,7 +39,7 @@ public class TxManagerTxUrlServiceImpl implements TxManagerTxUrlService {
 		//orderService.order();
 	}
 
-	@Transactional
+	//@Transactional
 	@TxTransaction
 	public void order() {
 		//本地调用
