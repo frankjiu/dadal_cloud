@@ -42,8 +42,14 @@
 		<module>dadal-cloud-common</module>
 		<module>dadal-cloud-log-service</module>
 		<module>dadal-cloud-user-service</module>
-		<module>dadal-cloud-tx-manager</module>
 		<module>dadal-cloud-zookeeper</module>
+		<module>dadal-cloud-tx-manager</module>
+		<module>dadal-cloud-tx-tc</module>
+		<module>dadal-cloud-tx-common</module>
+		<module>dadal-cloud-tx-txmsg</module>
+		<module>dadal-cloud-tx-logger</module>
+		<module>dadal-cloud-tx-netty</module>
+		<module>dadal-cloud-tx-tracing</module>
 	</modules>
 
 	<dependencies>
