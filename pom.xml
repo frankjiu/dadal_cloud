@@ -50,6 +50,7 @@
 		<module>dadal-cloud-tx-logger</module>
 		<module>dadal-cloud-tx-netty</module>
 		<module>dadal-cloud-tx-tracing</module>
+		<module>dadal-cloud-activiti</module>
 	</modules>
 
 	<dependencies>
