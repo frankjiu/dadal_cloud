@@ -1,31 +1,40 @@
 # dadal_cloud
 说明:
 	该项目是一个cloud体系架构示例,以微服务形式集成了各核心组件的主要功能.
+	
 项目框架(后台):
-	springboot, springcloud, mybatis, h2, mysql, zookeeper(辅助解决主键生成问题), quartz, SLF4J, FastDFS
+	JDK8, SpringCloud-Finchley.RELEASE, SpringBoot-2.0.4, MyBatis-v3.2.7, Maven-3.3.9, H2, MySQL-5.5.49, Zookeeper(辅助解决主键生成问题), Quartz, SLF4J, FastDFS
+	
 前端:	
-	jQuery, jQueryUI, jeUI(基于jQuery,拥有出色的兼容性) 以及 各类兼容性良好的单体组件, Vue3.0
+	jQuery, jQueryUI, jeUI(基于jQuery,拥有出色的兼容性) 以及 各类兼容性优秀的单体组件, VueJS 3.0
+	
 特点:
-	lombok, restful, swagger2
+	Lombok-v1.18.4, Restful, Swagger2
+	
 涉及协议:
-	tcp, http, okhttp3, websocket, mqtt
+	Tcp, Http, WebSocket, MQTT
+	
 工具:
-	Apache-Commons, DataUtils, JWT, fastjson, md5, poi, OkHttp3, Xstream
+	Apache-Commons, 自封装DataUtils, JWT, fastjson, DigestUtils, POI, OkHttp3, Xstream
+	
 脚本:
 	批量启动, 批量数据导入, 代码自动生成, 项目一键备份, 表语句一键生成
+	
 核心技术:
-	SpringCloud核心组件, Rabbitmq, Redis, MongoDB, Mycat, 数据读写分离, Jenkins, Protobuf, Druid, Docker
+	SpringCloud核心组件(eureka, feign, hytrisx, turbine, gateway), Rabbitmq, Redis, MongoDB, Mycat, 数据读写分离, Jenkins, Protobuf, Druid, Docker
 
-	1. 生活办公环境智能测控
+标的功能:
+	1.生活办公环境智能测控:
 		温度传感器(5分钟内平均温度低于18摄氏度, 启动空调制热; 高于23摄氏度, 启动空调制冷.)
 		湿度传感器(5分钟内平均湿度RH值低于45%, 启动加湿器加湿; 高于65%, 启动加湿器祛湿.)
-		
-	2. 企业级中央控制系统
+
+	2.企业级中央控制系统:
 		用户管理系统(用户注册, 用户管理, 权限控制...)
 		日志管理系统(日志记录, 日志备份, 滚动删除)
+		任务控制系统(任务添加, 任务配置, 任务启动, 任务停止)
 		安全控制系统(初始化设置随机时间[9-15个月]重启系统, 由超级管理员确权续用, 否则除了普通显示功能外, 其它核心功能全部锁定)
-	
-	3. 大众项目
+
+	3.大众项目:
 		   一.成本预算:
 	        1.前后台开发费用(90%,具体按功能多少和复杂程度而定);
 	        2.服务器费用(运行服务器和数据库服务器:存储空间大小,访问量大小);
@@ -37,9 +46,10 @@
 		        1.年运营费
 		        		单用户单请求10金币,兑换为10/100=0.1元
 				...
+				
 		    三.风险评估:
 		  	...
-		
+
 		    四.项目策划:
 		        主要功能: 分类发送/返回信息, 消息推送, 微信登录, 扫码分享, 支付(充值兑换提现)	
 		        1.架构设计,注意性能扩展,容量扩展和功能扩展.
