@@ -44,6 +44,8 @@
 		<module>dadal-cloud-user-service</module>
 		<module>dadal-cloud-zookeeper</module>
 		<module>dadal-cloud-activiti</module>
+		<module>dadal-cloud-web-task</module>
+		<module>dadal-cloud-core-shiro</module>
 	</modules>
 
 	<dependencies>

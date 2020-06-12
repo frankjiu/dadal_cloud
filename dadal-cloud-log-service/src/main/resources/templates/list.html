@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>App-Log-List</title>
+<script type="text/javascript" th:src="@{/js/jquery-1.11.1.js}"></script>
+<script type="text/javascript" th:src="@{/validation/jquery.validate.min.js}"></script>
+<script type="text/javascript" th:src="@{/validation/messages_zh.js}"></script>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+</head>
+<body class="container">
+	<div>
+		<h1>日志列表</h1>
+	</div>
+	
+	<form id="formId" class="multiple-form">
+		<label>日志详情:</label>
+		<input id="logInfoId" name="logInfo">
+		
+		<label>类名:</label>
+		<input id="classNameId" name="className">
+		
+        <label>开始时间:</label>
+        <input id="startTimeId" name="startLogTime" type="datetime-local" placeholder="yyyy-MM-dd HH:mm:ss">
+        <label>结束时间:</label>
+        <input id="endTimeId" name="endLogTime" type="datetime-local" placeholder="yyyy-MM-dd HH:mm:ss">
+        
+        <label>日志级别:</label>
+		<input id="selectedId" name="logLeval" onclick="clickFunc()" placeholder="请选择" readonly="readonly"/>
+		<ul class="select select-val" name="select_items" style="display:none;">
+			<li onclick="checkItems(this)">DEBUG</li>
+			<li onclick="checkItems(this)">ERROR</li>
+			<li onclick="checkItems(this)">INFO</li>
+		</ul>
+		
+		<button type="button" class="search" onclick="dataFunc(0)">查询</button>
+	</form>
+	
+	<div class="with:80%">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>日志时间</th>
+					<th>线程名</th>
+					<th>日志级别</th>
+					<th>类名</th>
+					<th>日志详情</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+				<tr th:each="appLog : ${pageModel.list}">
+					<td th:text="${appLog.logId}"></td>
+					<td th:text="${appLog.logTime}"></td>
+					<td th:text="${appLog.threadName}"></td>
+					<td th:text="${appLog.logLeval}"></td>
+					<td th:text="${appLog.className}"></td>
+					<td th:text="${appLog.logInfo}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+	<div class="modal-footer no-margin-top">
+		<ul id="pagingDownId" class="pagination pull-right no-margin">
+		</ul>
+	</div>
+		
+	<!-- ==============script================= -->
+	<script type="text/javascript">
+		var flag = false;
+		// 监听已选值点击事件,点击则进行显示和隐藏
+		function clickFunc(){	
+			if(!flag){
+				$('.select-val').show();
+				return flag = true;
+			}else{
+				$('.select-val').hide();
+				return flag = false;
+			}
+		}
+		// 选择选项后隐藏下拉框
+		function checkItems(obj){
+			 var oval = $(obj).text();
+			 $('#selectedId').val(oval); 	
+			 $(obj).parent('.select-val').hide(); 	
+			 return flag = false;
+		}
+	</script>
+	
+	<script type="text/javascript">
+		// 提交验证
+		function isAllOk(){
+			return $('#formId').valid();
+		}
+		
+		// validation校验
+		$("#formId").validate({
+			rules: {
+				logInfo: {
+					required: true,
+					rangelength:[2,2000]
+				},
+				className: {
+					required: true,
+					rangelength:[2,50]
+				}
+			},
+			messages: {
+				logInfo: {
+					required: "不能为空",
+					rangelength: "字符串长度在1-2000"
+				},
+				className: {
+					required: "不能为空",
+					rangelength: "字符串长度在1-50"
+				}
+			},
+			errorElement: "em",                  // 验证失败时在元素后增加em标签,用来放错误提示
+			errorPlacement: function (error, element) {   // 验证失败调用的函数
+				//error.addClass("error");   // 提示信息增加样式: 如字体和颜色等
+				error.css("color","red");   // 提示信息增加样式: 如字体和颜色等
+				error.insertAfter(element);
+			},
+			highlight: function (element, errorClass, validClass) {
+				$(element).addClass("has-error");     // 验证失败时给元素增加样式
+			},
+			unhighlight: function (element, errorClass, validClass) {
+				$(element).removeClass("has-error");  // 验证成功时去掉元素的样式
+			}
+		});
+		
+		//调用函数初始化页面
+		$(function(){
+			dataFunc(0);
+		})
+		//全局变量
+		var curPageNum;
+		var totalPages;
+		var startPage;
+		var prePage;
+		var nextPage;
+		var endPage;
+		var totalCount;
+
+		function dataFunc(pageNum) {
+			var flag = isAllOk();
+			if (!flag) {
+				return;
+			}
+			console.log("here");
+			//console.log("pageNum:" + pageNum);
+			var logInfo = $("#logInfoId").val();
+			var className = $("#classNameId").val();
+			var startLogTime = $("#startTimeId").val();
+			var endLogTime = $("#endTimeId").val();
+			var logLeval = $("#selectedId").val();
+			//默认时间设置
+			if (startLogTime == "") {
+				startLogTime = "1970-01-01 00:00:01";
+			}
+			if (endLogTime == "") {
+				endLogTime = "2170-01-01 00:00:01";
+			}
+
+			appLog = {
+				"logInfo" : logInfo,
+				"className" : className,
+				"startLogTime" : startLogTime,
+				"endLogTime" : endLogTime,
+				"logLeval" : logLeval,
+				"pageNum" : pageNum
+			};
+
+			$.ajax({
+				url : '/log/getPageData',
+				type : 'get',
+				data : appLog,
+				dataType : 'json',
+				async : true,
+				success : function(data) {
+					var arr = data.pageModel.list;
+					//console.log(arr);
+					var str = "";
+					$("#tbody").html(str);
+					for (var i = 0; i < arr.length; i++) {
+						str += '<tr>';
+						str += '<td>' + arr[i].logId + '</td>';
+						str += '<td>' + getDateFormat(arr[i].logTime) + '</td>';
+						str += '<td>' + arr[i].threadName + '</td>';
+
+						str += '<td>' + arr[i].logLeval + '</td>';
+						str += '<td>' + arr[i].className + '</td>';
+						str += '<td>' + arr[i].logInfo + '</td>';
+						str += '</tr>';
+					}
+					$("#tbody").html(str);
+					curPageNum = data.pageModel.pageNum;
+					totalPages = data.pageModel.totalPages;
+					startPage = data.pageModel.startPage;
+					prePage = data.pageModel.prePage;
+					nextPage = data.pageModel.nextPage;
+					endPage = data.pageModel.endPage;
+					totalCount = data.pageModel.totalCount;
+
+					var pageElem = "";
+					pageElem += "<li>";
+					pageElem += "<a href=\"javascript:void(0)\" onclick=\"dataFunc(startPage)\">首页</a>";
+					pageElem += "</li>";
+					if (pageNum > 0) {
+						pageElem += "<li>";
+						pageElem += "<a href=\"javascript:void(0)\" onclick=\"dataFunc(prePage)\">上一页</a>";
+						pageElem += "</li>";
+					}
+
+					if (totalPages >= 1) {
+						pageElem += "<li>";
+						pageElem += "<a href=\"javascript:void(0)\" onclick=\"dataFunc(1)\">1</a>";
+						pageElem += "</li>";
+					}
+					if (totalPages >= 2) {
+						pageElem += "<li>";
+						pageElem += "<a href=\"javascript:void(0)\" onclick=\"dataFunc(2)\">2</a>";
+						pageElem += "</li>";
+					}
+					if (totalPages >= 3) {
+						pageElem += "<li>";
+						pageElem += "<a href=\"javascript:void(0)\" onclick=\"dataFunc(3)\">3</a>";
+						pageElem += "</li>";
+					}
+					if (totalPages >= 4) {
+						pageElem += "<li>";
+						pageElem += "<a href=\"javascript:void(0)\" onclick=\"dataFunc(4)\">4</a>";
+						pageElem += "</li>";
+					}
+					if (totalPages >= 5) {
+						pageElem += "<li>";
+						pageElem += "<a href=\"javascript:void(0)\" onclick=\"dataFunc(5)\">5</a>";
+						pageElem += "</li>";
+					}
+					if (totalPages >= 6) {
+						pageElem += "<li>";
+						pageElem += "<span>...</span>";
+						pageElem += "</li>";
+					}
+
+					if (totalPages >= 10) {
+						pageElem += "<li>";
+						pageElem += "<a id=\"thirdMaxPageId\" href=\"javascript:void(0)\" onclick=\"dataFunc(endPage-2)\"></a>";
+						pageElem += "</li>";
+						
+						pageElem += "<li>";
+						pageElem += "<a id=\"secondMaxPageId\" href=\"javascript:void(0)\" onclick=\"dataFunc(endPage-1)\"></a>";
+						pageElem += "</li>";
+						
+						pageElem += "<li>";
+						pageElem += "<a id=\"maxPageId\" href=\"javascript:void(0)\" onclick=\"dataFunc(endPage)\"></a>";
+						pageElem += "</li>";
+					}
+					
+					if (pageNum + 1 < totalPages) {
+						pageElem += "<li>";
+						pageElem += "<a id=\"nextId\" href=\"javascript:void(0)\" onclick=\"dataFunc(nextPage)\">下一页</a>";
+						pageElem += "</li>";
+					}
+					pageElem += "<li>";
+					pageElem += "<a id=\"endId\" href=\"javascript:void(0)\" onclick=\"dataFunc(endPage)\">尾页</a>";
+					pageElem += "</li>";
+
+					pageElem += "<li>";
+					pageElem += "<span id=\"curId\"></span><span id=\"totalId\"></span>";
+					pageElem += "</li>";
+
+					$("#pagingDownId").html(pageElem);
+
+					$("#thirdMaxPageId").text(endPage-2);
+					$("#secondMaxPageId").text(endPage-1);
+					$("#maxPageId").text(endPage);
+					
+					$("#curId").text("第 " + curPageNum + " 页");
+					$("#totalId").text("共 " + totalPages + " 页");
+				},
+				error : function(data) {
+					console.log("error");
+				}
+			})
+		}
+
+		// Long类型时间解析
+		function getDateFormat(obj) {
+			var dateVal = obj + "";
+			if (obj != null) {
+				var date = new Date(parseInt(dateVal.replace("/Date(", "").replace(")/", ""), 10));
+				var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+				var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+
+				var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+				var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+				var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+				var milliseconds = "000";
+				if (date.getMilliseconds() < 10) {
+					milliseconds = "00" + date.getMilliseconds();
+				} else if (date.getMilliseconds() < 100) {
+					milliseconds = "0" + date.getMilliseconds();
+				} else {
+					milliseconds = date.getMilliseconds();
+				}
+				return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minutes + ":" + seconds + ","
+						+ milliseconds;
+			}
+		}
+	</script>
+	<!-- ==============script================= -->
+</body>
+</html>

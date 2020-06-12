@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>下拉框</title>
+		
+		<link rel="stylesheet" href="css/jeui.css"  media="all">
+		<script type="text/javascript" src="js/modules/jeui.js"></script>
+		
+	</head>
+	
+	<body>
+		<div class="je-p20">
+				<form id="itemcheac">
+					<div class="je-form-pane je-f14">
+						<select class="myselect" id="myselect">
+							<option value="">请选择</option>
+							<option value="1">交互设计</option>
+							<option value="2">视觉设计</option>
+							<option value="3">前端开发</option>
+							<option value="4">后端开发</option>
+							<option value="5">用户研究</option>
+							<option value="6">产品经理</option>
+							<optgroup label="技术开发">
+								<option value="7">C++</option>
+								<option value="8">C#</option>
+								<option value="9">JavaScript</option>
+								<option value="10">PHP</option>
+								<option value="11">JAVA</option>
+								<option value="12">Python</option>
+							</optgroup>
+						</select>
+						
+					<div class="je-form-item je-f14">
+						<button class="je-btn je-bg-green" id="btnId">提交</button>
+					</div>
+				</form>
+		</div>
+		
+		<script type="text/javascript">
+			jeui.use(["jquery","jeSelect"],function () {
+				$(".myselect").jeSelect({
+					sosList: false, //是否开启模糊搜索
+					size:6, //设置下拉框高度(显示个数)
+					// 点击当前的回调(elem:当前Select的ID;  index:索引;  val:选中的值.)
+					itemfun:function(elem, index, val) {
+						console.log("选中项的val值为:" + val);
+					}
+				});
+			})
+		</script>
+
+	</body>
+</html>

@@ -3,7 +3,7 @@
 	该项目是一个cloud体系架构示例,以微服务形式集成了各核心组件的主要功能.
 	
 项目框架(后台):
-	JDK8, SpringCloud-Finchley.RELEASE, SpringBoot-2.0.4(SpringWebMVC-5.0.8), MyBatis-v3.2.7, Maven-3.3.9, H2, MySQL-5.5.49, Zookeeper(辅助解决主键生成问题), Quartz, SLF4J, FastDFS
+	JDK8, SpringCloud-Finchley.RELEASE, SpringBoot-2.0.4(SpringWebMVC-5.0.8), MyBatis-v3.2.7, Maven-3.3.9, H2, MySQL-5.5.49, Zookeeper(辅助解决主键生成问题), Quartz, Shiro(JWT), SLF4J(LogBack), FastDFS
 	
 前端:	
 	jQuery, jQueryUI, jeUI(基于jQuery,拥有出色的兼容性) 以及 各类兼容性优秀的单体组件, VueJS 3.0
@@ -15,7 +15,7 @@
 	Tcp, Http, WebSocket, MQTT
 	
 工具:
-	Apache-Commons, 自封装DataUtils, JWT, fastjson, DigestUtils, POI, OkHttp3, Xstream
+	Apache-Commons, 自封装DataUtils, fastjson, DigestUtils, POI, OkHttp3, Xstream
 	
 脚本:
 	批量启动, 批量数据导入, 代码自动生成, 项目一键备份, 表语句一键生成
