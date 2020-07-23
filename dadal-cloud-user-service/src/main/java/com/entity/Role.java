@@ -11,6 +11,7 @@ package com.entity;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,6 +21,7 @@ import lombok.NoArgsConstructor;
  * @date: 2020年6月12日
  */
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Role {

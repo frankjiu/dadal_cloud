@@ -91,7 +91,7 @@ public class InitController {
 						service.getServiceId());
 			}
 		}
-		return "Now the service(spring.application.name=ddl-cloud-store-service) hash been injected into Eureka-Register!";
+		return "Now the service(spring.application.name=dadal-cloud-store-service) hash been injected into Eureka-Register!";
 	}
 
 }

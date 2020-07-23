@@ -46,6 +46,7 @@
 		<module>dadal-cloud-activiti</module>
 		<module>dadal-cloud-web-task</module>
 		<module>dadal-cloud-core-shiro</module>
+		<module>dadal-cloud-data</module>
 	</modules>
 
 	<dependencies>
