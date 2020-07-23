@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.modules.swagger2.mapper.UserMapper">
+
+	<sql id="columns" >
+        user_name as username, age, mobile
+	</sql>
+
+	<insert id="addUser" parameterType="com.modules.swagger2.entity.User">
+		INSERT INTO user(user_name, pass_word, age, mobile, create_time) 
+			VALUES(#{userName}, #{passWord}, #{age}, #{mobile}, #{createTime})
+	</insert>
+
+    <select id="getUsersByCreateTimeAndAges" resultType="com.modules.swagger2.entity.User">
+    	SELECT <include refid="columns"/> 
+   			FROM USER 
+   		WHERE CREATE_TIME <![CDATA[>=]]> DATE_FORMAT(#{startCreateTime}, '%Y-%m-%d %H:%i:%s')
+   			AND CREATE_TIME <![CDATA[<=]]> DATE_FORMAT(#{endCreateTime}, '%Y-%m-%d %H:%i:%s')
+    		AND AGE IN
+   		<foreach collection="ages" item="age" open="(" separator="," close=")">
+   			#{age}
+   		</foreach>
+    </select>
+    
+</mapper>

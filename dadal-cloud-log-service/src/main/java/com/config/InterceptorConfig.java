@@ -30,9 +30,9 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
 		/*registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("/login", "/checkLogin", "/exit",
 				"/ueditor/jsp/controller.jsp", "/ueditor/jsp/config.json", "/registered", "/loginUser/registered",
 				"/device/getDeviceById", "/loginUser/login", "/showQr/download", "/deviceSubtype/getSubTypeStates",
-				"/loginUser/register", //游客注册
-				"/messageInfo/updateDoorState", //修改门禁状态
-				"/messageInfo/getDoorMsg" //扫码开门记录
+				"/loginUser/register", //用户注册
+				"/messageInfo/updateDoorState",
+				"/messageInfo/getDoorMsg"
 		);
 		*/
 

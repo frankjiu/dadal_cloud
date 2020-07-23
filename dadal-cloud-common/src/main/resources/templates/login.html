@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>DaDaL Login</title>
+</head>
+<body>
+	<div>
+		<!-- this place should use method="post", use 'get' for convenient -->
+		<form th:action="@{/doLogin}" method="get">
+			<input id="uid" type="text" name="username" /><br/>
+			<input id="pid" type="password" name="password" /><br/>
+			<div th:text="${error}"></div>
+			<button type="submit">提交</button>
+		</form>
+	</div>
+</body>
+</html>
