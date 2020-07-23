@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>配置列表</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>ip地址</td>
+			<td>端口号</td>
+		</tr>
+		<tr th:each="config: ${configs}">
+			<td th:text="${config.ip}"></td>
+			<td th:text="${config.port}"></td>
+		</tr>
+	</table>
+	
+</body>
+</html>

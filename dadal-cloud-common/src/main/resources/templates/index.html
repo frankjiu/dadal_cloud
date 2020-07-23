@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<meta charset="UTF-8">
+<title>欢迎光临嗒嗒啦!</title>
+</head>
+<body>
+	<h3>
+		hello,
+		<shiro:principal />
+	</h3>
+	<h3>
+		<a href="/logout">注销登录</a>
+	</h3>
+	<h3>
+		<p>元素级权限控制</p>
+	</h3>
+	<h3>
+		<a shiro:hasAnyRoles="admin,user" href="/user">普通用户页面(供管理员和普通用户访问)</a>
+	</h3>
+	<h3>
+		<a shiro:hasRole="admin" href="/admin">管理员页面(仅供管理员访问)</a>
+	</h3>
+</body>
+</html>

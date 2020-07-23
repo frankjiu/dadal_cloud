@@ -1,0 +1,17 @@
+########################## basic info ##########################
+spring:
+  application:
+    name: dadal-cloud-activiti
+  datasource:
+    url: jdbc:mysql://localhost:3306/activiti?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+server:
+  port: 9002
+
+########################## register-url ##########################
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://register-center-1001:1001/eureka/

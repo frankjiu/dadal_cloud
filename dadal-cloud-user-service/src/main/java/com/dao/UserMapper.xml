@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatisrepository.dao.UserDao">
+
+	<sql id="columns" >
+        userName, loginName, weChat, idCard
+	</sql>
+
+    <select id="findUsersByWeChatsAndPoint" resultType="com.mybatisrepository.vo.QaUserVo">
+    	SELECT <include refid="columns"/> 
+    		FROM QA_USER 
+    		WHERE CREATE_TIME <![CDATA[>=]]> TO_DATE(#{minCreateTime}, 'yyyymmddhh24miss')
+    			AND CREATE_TIME <![CDATA[<=]]> TO_DATE(#{maxCreateTime}, 'yyyymmddhh24miss')
+	    		AND POINTS <![CDATA[<]]> #{point} 
+	    		AND WECHAT IN
+		    		<foreach collection="weChats" item="weChat" open="(" separator="," close=")">
+		    			#{weChat}
+		    		</foreach>
+    </select>
+    
+    
+    
+</mapper>

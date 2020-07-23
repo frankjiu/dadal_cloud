@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Insert title here</title>
+</head>
+<body>
+<form method="post" action="login" >
+    <label for="name">用户名</label>
+    <shiro:authenticated>
+        <input id="name" type="text" name="username" value="<shiro:principal/>" >
+    </shiro:authenticated>
+    <shiro:notAuthenticated>
+        <input id="name" type="text" name="username" value=" " >
+    </shiro:notAuthenticated>
+    <br>
+    <label for="pass">密码</label>
+    <input id="pass" type="text" name="password">
+    <button type="submit">提交</button>
+
+</form>
+</body>
+</html>
