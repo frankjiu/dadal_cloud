@@ -7,15 +7,14 @@
  * @version V1.0
  */
 
-package com.modules.thread;
+package com.modules.thread.countdown;
 
 import java.util.concurrent.CountDownLatch;
 
 /**
  * @author: Frankjiu
- * @date: 2019年12月1日 下午6:02:07
+ * @date: 2020年4月19日
  */
-
 public class MainApplication {
 
 	public static void main(String[] args) {

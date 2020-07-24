@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>在线聊天室</title>
+</head>
+<body>
+	<input type="text" id="message">
+	<input type="button" value="发送消息" onclick="sendMessage()">
+
+	接收到的消息:
+	<p id="server_massage" style="backgroud-color: #AAAAAA"></p>
+
+	<script type="text/javascript">
+		
+		var webSocket = null;
+	
+		// 判断当前浏览器是否支持webSocket, 'ws://' 为websocket协议
+		if(window.WebSocket){
+			webSocket = new WebSocket("ws://127.0.0.1:9090/ws");
+			webSocket.onopen = function(){
+				console.log("建立连接");
+			}
+			
+			webSocket.onclose = function(){
+				console.log("关闭连接");
+			}
+			
+			webSocket.onmessage = function(e){
+				console.log("接收到服务器消息为:" + e.data);
+				var server_massage = document.getElementById("server_massage");
+				server_massage.innerHTML += e.data + "<br/>";
+			}
+			
+		} else {
+			alert("当前浏览器不支持webSocket");
+		}
+		
+		function sendMessage(){
+			var message = document.getElementById("message");
+			webSocket.send(message.value);
+			
+		}
+		
+	</script>
+</body>
+</html>

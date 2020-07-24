@@ -1,9 +1,10 @@
-package com.modules.thread;
+package com.modules.thread.countdown;
 
 import java.util.concurrent.CountDownLatch;
 
 /**
- * Created by shenhongxi on 2016/8/12.
+ * @author: Frankjiu
+ * @date: 2020年4月19日
  */
 public class CountDownLatchTest {
 

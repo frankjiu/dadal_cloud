@@ -1,15 +1,22 @@
-package com.modules.thread;
+package com.modules.thread.ticket;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * @author: Frankjiu
+ * @date: 2020年4月19日
+ */
+@Slf4j
 public class TicketThread {
 	// 创建队列容器
 	static Queue<String> tickets = new ConcurrentLinkedQueue<>();
 	// 向容器添加元素
 	static {
 		for (int i = 0; i < 15; i++)
-			tickets.add("票编号： " + i);
+			tickets.add(i + "号票");
 	}
 
 	// 重复从容器取元素测试
@@ -20,11 +27,11 @@ public class TicketThread {
 		for (int i = 0; i < 10; i++) {
 			new Thread(() -> {
 				while (true) {
-					String s = tickets.poll();
-					if (s == null)
+					String ticketNum = tickets.poll();
+					if (ticketNum == null)
 						break;
 					else
-						System.out.println("销售了--" + s);
+						log.info("已销售" + ticketNum);
 				}
 			}).start();
 		}
