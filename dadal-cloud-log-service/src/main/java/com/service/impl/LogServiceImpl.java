@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dao.LogDao;
 import com.entity.AppLog;
-import com.mapper.LogMapper;
 import com.service.LogService;
 
 /**
@@ -27,7 +27,7 @@ import com.service.LogService;
 public class LogServiceImpl implements LogService {
 
 	@Autowired
-	LogMapper logMapper;
+	LogDao logMapper;
 
 	/**
 	 * @return 日志记录

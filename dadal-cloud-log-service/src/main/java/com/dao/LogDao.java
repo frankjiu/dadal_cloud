@@ -7,7 +7,7 @@
  * @version V1.0
  */
 
-package com.mapper;
+package com.dao;
 
 import java.util.List;
 
@@ -21,16 +21,16 @@ import com.entity.AppLog;
  * @date: 2020年6月1日
  */
 @Mapper
-public interface LogMapper {
+public interface LogDao {
 
-	public int delete();
+	int delete();
 
-	public int insert(AppLog appLog);
+	int insert(AppLog appLog);
 
-	public int insertBatch(List<AppLog> list);
+	int insertBatch(List<AppLog> list);
 
-	public int getTotal(@Param("appLog") AppLog appLog);
+	int getTotal(@Param("appLog") AppLog appLog);
 
-	public List<AppLog> getList(@Param("startIndex") int startIndex, @Param("pageSize") int pageSize, @Param("appLog") AppLog appLog);
+	List<AppLog> getList(@Param("startIndex") int startIndex, @Param("pageSize") int pageSize, @Param("appLog") AppLog appLog);
 
 }

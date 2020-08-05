@@ -19,14 +19,14 @@ import com.entity.AppLog;
  */
 public interface LogService {
 
-	public void delete();
+	void delete();
 
-	public int insert(AppLog appLog);
+	int insert(AppLog appLog);
 
-	public int insertBatch(List<AppLog> appLog);
+	int insertBatch(List<AppLog> appLog);
 
-	public int getTotal(AppLog appLog);
+	int getTotal(AppLog appLog);
 
-	public List<AppLog> getList(int startIndex, int pageSize, AppLog appLog);
+	List<AppLog> getList(int startIndex, int pageSize, AppLog appLog);
 
 }
