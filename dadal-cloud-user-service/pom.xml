@@ -8,6 +8,12 @@
 	</parent>
 	<artifactId>dadal-cloud-user-service</artifactId>
 
+	<properties>
+		<parallelgzip.version>1.0.6-CSAIR-SNAPSHOT</parallelgzip.version>
+		<mybatisplus.version>3.3.0</mybatisplus.version>
+		<mybatisplus.dynamic.version>3.1.0</mybatisplus.dynamic.version>
+	</properties>
+
 	<dependencies>
 		<!-- web -->
 		<dependency>
@@ -99,6 +105,35 @@
             <groupId>org.xmlunit</groupId>
             <artifactId>xmlunit-core</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>com.nixxcode.jvmbrotli</groupId>
+            <artifactId>jvmbrotli</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.anarres</groupId>
+            <artifactId>parallelgzip</artifactId>
+            <version>${parallelgzip.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatisplus.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>${mybatisplus.dynamic.version}</version>
+        </dependency>
+        
     </dependencies>
 
 </project>
