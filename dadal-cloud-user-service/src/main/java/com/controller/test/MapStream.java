@@ -6,7 +6,7 @@
  * @version: V1.0
  */
 
-package com.controller;
+package com.controller.test;
 
 import java.math.BigDecimal;
 import java.util.AbstractMap;
@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.reflect.FieldUtils;
@@ -110,8 +112,52 @@ public class MapStream {
             }
         }).collect(Collectors.toList());
 
+        int sum = list.stream().parallel().filter(e -> e.getName().equals("李四")).mapToInt(e -> e.getAge()).sum();
+        System.out.println(">>>sum:" + sum);
+
+        list.stream().forEach(System.out::println);
+
+        Optional<Student> findFirst = list.stream().findFirst();
+
+        Stream<Student> stream = list.stream();
+        Stream<Student> stream2 = Stream.of(new Student());
+
+        Stream<Student> concat = Stream.concat(stream, stream2);
+
         //System.out.println(listNames);
+
+        Stream<Double> stream3 = Stream.generate(Math::random).limit(2);
+        stream3.forEach(System.out::println);
+
+        Integer collect3 = list.stream().collect(Collectors.summingInt(Student::getAge));
+        System.out.println("collect3>>>>" + collect3);
+
+        Integer integer = list.stream().map(Student::getAge).collect(Collectors.maxBy(Integer::compare)).get();
+        System.out.println(integer);
+
+        int size = list.subList(1, 3).size();
+        System.out.println("size:" + size);
+
         System.out.println(">>>" + collect);
+
+        Stream<String> stm = Stream.of("A", "b");
+        List<String> collect2 = stm.peek(System.out::println).collect(Collectors.toList());
+        //System.out.println("stm:" + stm);
+
+        int availableProcessors = Runtime.getRuntime().availableProcessors();
+        System.out.println("availableProcessors: " + availableProcessors);
+
+        collect2.stream().forEach(e -> System.out.println(e));
+        for (int i = 0; i < list.size(); i++) {
+            if (i == 3) {
+                break;
+            }
+        }
+
+        //int sum2 = IntStream.of(1, 2, 3, 4).filter(e -> e > 2).peek(e -> System.out.println("Filtered value: " + e)).map(e -> e * e)
+        // .peek(e -> System.out.println("Mapped value: " + e)).sum();
+        //System.out.println("sum2:" + sum2);
+
         // Student(name=李四, age=24, newOrder=0001), 
         // Student(name=王五, age=25, newOrder=0002), 
         // Student(name=李四, age=20, newOrder=0001)

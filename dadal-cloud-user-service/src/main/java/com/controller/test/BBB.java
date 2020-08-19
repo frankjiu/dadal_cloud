@@ -6,7 +6,7 @@
  * @version: V1.0
  */
 
-package com.controller;
+package com.controller.test;
 
 import org.springframework.stereotype.Component;
 
