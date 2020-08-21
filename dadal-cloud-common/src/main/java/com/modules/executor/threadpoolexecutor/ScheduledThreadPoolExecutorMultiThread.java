@@ -18,7 +18,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author: Frankjiu
  * @date: 2020年8月20日
  */
-
 public class ScheduledThreadPoolExecutorMultiThread {
     private static Integer count = 1;
     MyTimereTask myTimereTask = new MyTimereTask();
