@@ -322,6 +322,12 @@
             <artifactId>okhttp</artifactId>
         </dependency>
         
+        <!-- apache httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        
 	</dependencies>
 
 </project>

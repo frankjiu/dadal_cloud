@@ -7,7 +7,7 @@
  * @version: V1.0
  */
 
-package com.modules.okhttp3;
+package com.modules.http.okhttp3;
 
 /**
  * @Description: 配置OkHttpClient 工具类中已配置过则此处可省略

@@ -6,7 +6,7 @@
  * @version: V1.0
  */
 
-package com.modules.okhttp3;
+package com.modules.http.okhttp3;
 
 import java.io.IOException;
 import java.net.URLEncoder;
