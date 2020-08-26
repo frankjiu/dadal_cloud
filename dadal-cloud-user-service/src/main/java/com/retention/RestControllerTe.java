@@ -24,13 +24,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.config.StringUtil;
 import com.entity.User;
 import com.entity.UserDto;
 import com.resp.CompressUtils;
 import com.resp.Result;
 import com.resp.ResultOld;
 import com.service.UserService;
+import com.utils.StringUtil;
 
 import lombok.extern.slf4j.Slf4j;
 

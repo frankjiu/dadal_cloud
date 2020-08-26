@@ -9,6 +9,7 @@
 package com;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.SpringCloudApplication;
 
 /**
@@ -17,10 +18,11 @@ import org.springframework.cloud.client.SpringCloudApplication;
  * @date: 2020年5月5日
  */
 @SpringCloudApplication
+@EnableCaching
 public class UserApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UserApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(UserApplication.class, args);
+    }
 
 }

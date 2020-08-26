@@ -3,8 +3,6 @@ package com.resp;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,12 +14,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PageList<E> {
-	private Collection<E> data = new ArrayList<>();
-	private long totalNum;
+    private Collection<E> data = new ArrayList<>();
+    private long totalNum;
 
-	public PageList(IPage<E> page) {
-		this.data = page.getRecords();
-		this.totalNum = page.getTotal();
-	}
+    /*public PageList(IPage<E> page) {
+    	this.data = page.getRecords();
+    	this.totalNum = page.getTotal();
+    }*/
 
 }

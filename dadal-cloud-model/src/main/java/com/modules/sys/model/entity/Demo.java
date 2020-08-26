@@ -1,12 +1,11 @@
 /**
  * All rights Reserved, Designed By www.xcompany.com  
- * @Package: com.entity   
  * @author: Frankjiu
- * @date: 2020年6月12日
+ * @date: 2020年8月26日
  * @version: V1.0
  */
 
-package com.entity;
+package com.modules.sys.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,18 +13,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @Description: User
+ * @Description: xxx实体类
  * @author: Frankjiu
- * @date: 2020年6月12日
+ * @date: 2020年8月26日
  */
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class User {
-    private Integer id;
-    private String userName;
-    private String password;
-    private String salt;
+public class Demo {
+
+    private String demoId;
+
 }

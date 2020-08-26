@@ -30,34 +30,34 @@ import com.service.UserService;
 @Controller
 @RequestMapping("/user")
 public class LoginsController {
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	@Autowired
-	private UserService userService;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    private UserService userService;
 
-	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 
-	@PostMapping("/login")
-	public String loginLogic(User user) {
-		Subject subject = SecurityUtils.getSubject();
-		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
-		// 登录失败会抛出异常，则交由异常解析器处理
-		token.setRememberMe(true);
-		subject.login(token);
+    @PostMapping("/login")
+    public String loginLogic(User user) {
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword());
+        // 登录失败会抛出异常，则交由异常解析器处理
+        token.setRememberMe(true);
+        subject.login(token);
 
-		return "main";
-	}
+        return "main";
+    }
 
-	@GetMapping("/register")
-	public String regiter() {
-		return "register";
-	}
+    @GetMapping("/register")
+    public String regiter() {
+        return "register";
+    }
 
-	@PostMapping("/register")
-	public String logicRegiter(User user) {
-		userService.insertUser(user);
-		return "redirect:login";
-	}
+    @PostMapping("/register")
+    public String logicRegiter(User user) {
+        userService.insertUser(user);
+        return "redirect:login";
+    }
 }

@@ -1,4 +1,4 @@
-package com.config;
+package com.utils;
 
 import org.springframework.util.Assert;
 

@@ -47,6 +47,8 @@
 		<module>dadal-cloud-web-task</module>
 		<module>dadal-cloud-core-shiro</module>
 		<module>dadal-cloud-data</module>
+		<module>dadal-cloud-func-test</module>
+		<module>dadal-cloud-model</module>
 	</modules>
 
 	<dependencies>

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dao.UserMapper;
+import com.dao.UserDao;
 import com.entity.User;
 
 /**
@@ -29,7 +29,7 @@ import com.entity.User;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserMapper userMapper;
+	private UserDao userMapper;
 
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, rollbackFor = SQLException.class)
