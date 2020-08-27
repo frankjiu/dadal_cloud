@@ -7,6 +7,8 @@
 
 package com.modules.sys.model.entity;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +25,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Demo {
 
-    private String demoId;
+    private String id;
+    private String cardName;
+    private String cardNumber;
+    private LocalDateTime createTime;
 
 }

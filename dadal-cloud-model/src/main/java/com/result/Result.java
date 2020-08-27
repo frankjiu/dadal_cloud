@@ -1,4 +1,4 @@
-package com.modules.resp;
+package com.result;
 
 import java.util.Collection;
 

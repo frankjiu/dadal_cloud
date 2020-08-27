@@ -1,1 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.modules.sys.dao.DemoDao">
+
+	<sql id="columns">
+		CARD_NAME, CARD_NUMBER, CREATE_TIME
+	</sql>
+
+	<select id="getDemoList" resultType="com.modules.sys.model.entity.Demo">
+		SELECT
+		<include refid="columns" />
+		FROM DEMO
+		WHERE CARD_NAME = '中国银行'
+	</select>
+
+</mapper>
