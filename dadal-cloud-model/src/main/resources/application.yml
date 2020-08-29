@@ -1,0 +1,28 @@
+spring:
+    #application name
+    application:
+        name: dadal-cloud-model
+        
+    #MySQL
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/dadal?serverTimezone=Asia/Shanghai&useSSL=false
+        username: root
+        password: root
+        
+    #html templates config
+    mvc:
+        view:
+            prefix: /
+            suffix: .html
+
+#port
+server:
+    port: 55555
+
+#register-url
+#eureka:
+#    client:
+#        serviceUrl:
+#            defaultZone: http://register-center-1001:1001/eureka/
+

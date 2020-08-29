@@ -1,12 +1,11 @@
 /**
  * All rights Reserved, Designed By www.xcompany.com  
- * @Package: com.modules.sys.exception   
  * @author: Frankjiu
  * @date: 2020年8月27日
  * @version: V1.0
  */
 
-package com.modules.sys.exception;
+package com.exception;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,33 +21,33 @@ public class CommonException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    private String msg;
+    private String message;
     private int code = 500;
 
     public CommonException() {
         super("Internal System Error");
-        this.msg = "Internal System Error";
+        this.message = "Internal System Error";
     }
 
-    public CommonException(String msg) {
-        super(msg);
-        this.msg = msg;
+    public CommonException(String message) {
+        super(message);
+        this.message = message;
     }
 
-    public CommonException(String msg, Throwable e) {
-        super(msg, e);
-        this.msg = msg;
+    public CommonException(String message, Throwable e) {
+        super(message, e);
+        this.message = message;
     }
 
-    public CommonException(String msg, int code) {
-        super(msg);
-        this.msg = msg;
+    public CommonException(String message, int code) {
+        super(message);
+        this.message = message;
         this.code = code;
     }
 
-    public CommonException(String msg, int code, Throwable e) {
-        super(msg, e);
-        this.msg = msg;
+    public CommonException(String message, int code, Throwable e) {
+        super(message, e);
+        this.message = message;
         this.code = code;
     }
 

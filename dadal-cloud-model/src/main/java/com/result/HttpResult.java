@@ -11,35 +11,35 @@ import lombok.Data;
  */
 @Data
 @SuppressWarnings("rawtypes")
-public class Result<T> {
+public class HttpResult<T> {
 
     private boolean success;
     private String code;
     private String message;
     private T data;
 
-    public Result() {
+    public HttpResult() {
     }
 
-    public Result(boolean success, RespCode respCode) {
+    public HttpResult(boolean success, RespCode respCode) {
         this.success = success;
         this.code = respCode.getCode();
         this.message = respCode.getDescription();
     }
 
-    public Result(boolean success, RespCode respCode, T data) {
+    public HttpResult(boolean success, RespCode respCode, T data) {
         this.success = success;
         this.code = respCode.getCode();
         this.message = respCode.getDescription();
         this.data = data;
     }
 
-    public Result(RespCode respCode) {
+    public HttpResult(RespCode respCode) {
         this.code = respCode.getCode();
         this.message = respCode.getDescription();
     }
 
-    public Result(RespCode respCode, String specifiedMessage) {
+    public HttpResult(RespCode respCode, String specifiedMessage) {
         this.code = respCode.getCode();
         this.message = specifiedMessage;
     }
@@ -47,21 +47,21 @@ public class Result<T> {
     /**
      * 返回成功
      */
-    public static Result success() {
-        return new Result(true, RespCode.SUCCESS);
+    public static HttpResult success() {
+        return new HttpResult(true, RespCode.SUCCESS);
     }
 
     /**
      * 返回成功(数据)
      */
-    public static <T> Result<T> success(T data) {
-        return new Result<>(true, RespCode.SUCCESS, data);
+    public static <T> HttpResult<T> success(T data) {
+        return new HttpResult<>(true, RespCode.SUCCESS, data);
     }
 
     /**
      * 返回成功(分页数据)
      */
-    public static <T> Result<PageModel> success(Collection<T> list, Number totalCount) {
+    public static <T> HttpResult<PageModel> success(Collection<T> list, Number totalCount) {
         PageModel<T> pageList = new PageModel<T>();
         pageList.setData(list);
         pageList.setTotalCount(totalCount.longValue());
@@ -71,36 +71,36 @@ public class Result<T> {
     /**
      * 返回失败
      */
-    public static Result fail() {
-        return new Result(RespCode.FAIL);
+    public static HttpResult fail() {
+        return new HttpResult(RespCode.FAIL);
     }
 
     /**
      * 返回失败(错误码)
      */
-    public static Result fail(RespCode chooseCode) {
-        return new Result(chooseCode);
+    public static HttpResult fail(RespCode chooseCode) {
+        return new HttpResult(chooseCode);
     }
 
     /**
      * 返回失败(指定信息)
      */
-    public static Result fail(String specifiedMessage) {
-        return new Result(RespCode.FAIL, specifiedMessage);
+    public static HttpResult fail(String specifiedMessage) {
+        return new HttpResult(RespCode.FAIL, specifiedMessage);
     }
 
     /**
      * 返回失败(异常信息)
      */
-    public static Result fail(Exception e) {
-        return new Result(RespCode.FAIL, e.getMessage());
+    public static HttpResult fail(Exception e) {
+        return new HttpResult(RespCode.FAIL, e.getMessage());
     }
 
     /**
      * 返回失败(错误码和指定信息)
      */
-    public static Result fail(RespCode respCode, String specifiedMessage) {
-        return new Result(respCode, specifiedMessage);
+    public static HttpResult fail(RespCode respCode, String specifiedMessage) {
+        return new HttpResult(respCode, specifiedMessage);
     }
 
 }
