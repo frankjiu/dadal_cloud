@@ -7,6 +7,7 @@
 
 package com.modules.sys.model.vo;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -15,8 +16,11 @@ import lombok.Data;
  * @date: 2020年8月26日
  */
 @Data
+@Builder
 public class DemoVo {
 
-    private String demoDataField;
+    private String id;
+    private String cardName;
+    private String cardNumber;
 
 }

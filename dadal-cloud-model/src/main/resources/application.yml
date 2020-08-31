@@ -26,3 +26,10 @@ server:
 #        serviceUrl:
 #            defaultZone: http://register-center-1001:1001/eureka/
 
+#logging configs
+logging:
+    config: classpath:logback-spring.xml
+  
+#mapper files location(it is no need to config this under this constructor)
+#mybatis:
+#    mapper-locations: classpath:mapper/**/*.xml    

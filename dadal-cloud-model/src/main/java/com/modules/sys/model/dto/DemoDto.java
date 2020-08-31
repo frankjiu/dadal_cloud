@@ -7,7 +7,7 @@
 
 package com.modules.sys.model.dto;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 import lombok.Data;
 
@@ -19,6 +19,9 @@ import lombok.Data;
 @Data
 public class DemoDto {
 
-    private List<String> demoParamName;
+    private String id;
+    private String cardName;
+    private String cardNumber;
+    private LocalDateTime createTime;
 
 }

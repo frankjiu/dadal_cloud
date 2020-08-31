@@ -1,0 +1,8 @@
+POSTMAN
+    请求类型: Post
+    请求url: http://localhost:55555/getDemoList
+    请求headers: Content-Type     application/json
+    请求Body:
+        {
+            "cardName": "中国银行"
+        }
